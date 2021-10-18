@@ -15,7 +15,7 @@ class LoanPaymentService extends Service
     {
         $payment = $this->findOrFail($id);
         if ($data['amount'] != $payment->amount) {
-            throw new \Exception("Payment amount not correct");
+            abort(400, "Payment amount not correct");
         }
         $payment->status = LoanPayment::DONE;
         return $payment->save();

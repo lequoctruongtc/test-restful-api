@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 FILE_ENV=./src/.env
 if test ! -f "$FILE_ENV"

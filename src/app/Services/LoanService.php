@@ -23,7 +23,7 @@ class LoanService extends Service
     {
         $loan = $this->findOrFail($id);
         if ($loan->status === Loan::APPROVED) {
-            throw new \Exception("This loan has been approve");
+            abort(400, "This loan has been approve");
         }
         $start = now();
         $end = $start->copy()->add($loan->term_type, $loan->term);
@@ -36,7 +36,7 @@ class LoanService extends Service
         return $loanPayments;
     }
 
-    private function calculateLoanPayment($loan, $start, $end, $duration)
+    public function calculateLoanPayment($loan, $start, $end, $duration)
     {
         $data = [];
         $period = CarbonPeriod::create($start, $duration, $end, CarbonPeriod::EXCLUDE_START_DATE);

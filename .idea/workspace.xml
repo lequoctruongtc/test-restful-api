@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68ab2470-e92b-4052-9bb3-fd7876a3c53a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mysql/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.env.testing" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Exceptions/Handler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Http/Controllers/Api/LoanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Http/Controllers/Api/LoanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Services/LoanPaymentService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Services/LoanPaymentService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Services/LoanService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Services/LoanService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/Feature/AuthTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/Feature/AuthTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/Feature/LoanPaymentTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/Feature/LoanPaymentTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/Feature/LoanTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/Feature/LoanTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/Unit/LoanTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +170,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/postman" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/tests/Unit" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -171,11 +183,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/tests/Unit" />
       <recent name="$PROJECT_DIR$/postman" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app/Services" />
       <recent name="$PROJECT_DIR$/app/Services/Loan" />
-      <recent name="$PROJECT_DIR$/app/Services/User" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -199,7 +211,7 @@
       <workItem from="1634302361866" duration="1410000" />
       <workItem from="1634356339543" duration="4072000" />
       <workItem from="1634364200165" duration="55808000" />
-      <workItem from="1634486880150" duration="16613000" />
+      <workItem from="1634486880150" duration="25374000" />
     </task>
     <servers />
   </component>

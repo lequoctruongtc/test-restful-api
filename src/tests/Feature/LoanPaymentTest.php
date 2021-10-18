@@ -22,7 +22,11 @@ class LoanPaymentTest extends TestCase
         $this->actingAs($user);
         $response = $this->getJson('/api/v1/loan-payments');
 
-        $response->assertStatus(200);
+        $response->assertOk()->assertJsonStructure([
+            'data' => [
+                'loan_payments'
+            ]
+        ]);
     }
 
     public function test_user_can_see_detail_loan_payment()
@@ -40,7 +44,11 @@ class LoanPaymentTest extends TestCase
 
         $response = $this->getJson("/api/v1/loan-payments/{$loanPayment->id}");
 
-        $this->assertEquals(100, $response->json()['data']['amount']);
+        $response->assertOk()->assertJson([
+            "data" => [
+                "amount" => 100
+            ]
+        ]);
     }
 
     public function test_user_pay_one_loan_payment_success()
@@ -50,17 +58,17 @@ class LoanPaymentTest extends TestCase
 
         $loanPayment = LoanPayment::factory()->create([
             'loan_id' => 1,
-            'amount' => 100,
+            'amount' => 123.45,
             'start_at' => now(),
             'end_at' => now()->addMonth(),
             'status' => 'processing',
         ]);
 
-        $response = $this->patchJson("/api/v1/loan-payments/{$loanPayment->id}/pay", ['amount' => 100]);
+        $response = $this->patchJson("/api/v1/loan-payments/{$loanPayment->id}/pay", ['amount' => 123.45]);
 
-        $loanPayment->refresh();
-
-        $this->assertEquals('done', $loanPayment->status);
+        $response->assertOk()->assertJson([
+            "message" => "Payment successful"
+        ]);
     }
 
     public function test_user_pay_one_loan_payment_fail()
@@ -78,9 +86,9 @@ class LoanPaymentTest extends TestCase
 
         $response = $this->patchJson("/api/v1/loan-payments/{$loanPayment->id}/pay", ['amount' => 101]);
 
-        $loanPayment->refresh();
-
-        $this->assertEquals('done', $loanPayment->status);
+        $response->assertStatus(400)->assertJson([
+            "message" => "Payment amount not correct"
+        ]);
     }
 
     public function test_user_pay_one_loan_payment_validation()
@@ -98,8 +106,11 @@ class LoanPaymentTest extends TestCase
 
         $response = $this->patchJson("/api/v1/loan-payments/{$loanPayment->id}/pay", ['amount' => '']);
 
-        $loanPayment->refresh();
-
-        $this->assertEquals('done', $loanPayment->status);
+        $response->assertStatus(422)->assertJson([
+            "message" => "The given data was invalid.",
+            "errors" => [
+                "amount" => ["The amount field is required."]
+          ]
+        ]);
     }
 }

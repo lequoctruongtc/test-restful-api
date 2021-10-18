@@ -21,7 +21,7 @@ class LoanController extends Controller
 
     public function index()
     {
-        $loans = $this->loanService->paginate();
+        $loans = $this->loanService->all();
         $resources = new LoanCollection($loans);
 
         return $resources;

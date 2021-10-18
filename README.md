@@ -19,8 +19,19 @@ chmod +x ./start.sh
 
 ## Run test
 ```shell
-docker-compose exec php sh -c php artisan test
+docker-compose exec php sh
+php artisan test or vendor/bin/phpunit
 ```
+
+## Flow
+#### Login to user
+#### Request loan
+#### Approve loans
+```shell
+docker-compose exec php sh
+php artisan loan:approve
+```
+#### Make loan payment
 
 ## Postman collection
 Import file at "postman/mini-aspire-api.postman_collection.json"
@@ -36,8 +47,8 @@ Instructions on how to use them in your own application are linked below.
 | Loan Detail | GET |  | /api/v1/loans/{id} |
 | Store Loan | POST | { "amount": 100000, "term": 1, "term_type": "years" } | /api/v1/loans |
 | List Loan Payment | GET |  | /api/v1/loan-payments |
-| Loan Payment Detail | POST |  | /api/v1/loan-payments/1 |
-| Pay Loan Payment | PATCH | | /api/v1/loan-payments/1/pay |
+| Loan Payment Detail | GET |  | /api/v1/loan-payments/{id} |
+| Pay Loan Payment | PATCH | | /api/v1/loan-payments/{id}/pay |
 
 ## Account testing
 email: example@gmail.com

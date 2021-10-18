@@ -23,10 +23,14 @@ class LoanTest extends TestCase
 
         $response = $this->getJson('/api/v1/loans');
 
-        $response->assertOk();
+        $response->assertOk()->assertJsonStructure([
+            'data' => [
+                'loans'
+            ]
+        ]);
     }
 
-    public function test_user_create_loan()
+    public function test_user_create_loan_success()
     {
         $this->actingAs(User::factory()->create(['email' => 'example@gmail.com']));
 
@@ -37,6 +41,19 @@ class LoanTest extends TestCase
                 'term_type' => 'years',
             ]
         );
+
+        $response->assertOk()->assertJson(['message' => 'Loan has been created successful'])
+        ->assertJsonStructure([
+            "data" => [
+                'id',
+                'amount',
+                'term',
+                'term_type',
+                'status',
+                'created_at',
+                'updated_at',
+            ]
+        ]);
 
         $this->assertCount(1, Loan::all());
     }
@@ -53,7 +70,14 @@ class LoanTest extends TestCase
             ]
         );
 
-        $response->assertStatus(422);
+        $response->assertStatus(422)->assertJson([
+            "message" => "The given data was invalid.",
+            "errors" => [
+                "amount" => ["The amount field is required."],
+                "term" => ["The term field is required."],
+                "term_type" => ["The term type field is required."],
+            ]
+        ]);
     }
 
     public function test_user_can_see_detail_own_loan()
@@ -71,6 +95,16 @@ class LoanTest extends TestCase
 
         $response = $this->getJson("/api/v1/loans/{$loan->id}");
 
-        $response->assertOk();
+        $response->assertOk()->assertJsonStructure([
+            "data" => [
+                'id',
+                'amount',
+                'term',
+                'term_type',
+                'status',
+                'created_at',
+                'updated_at',
+            ]
+        ]);
     }
 }

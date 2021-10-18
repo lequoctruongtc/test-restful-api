@@ -30,8 +30,11 @@ class AuthTest extends TestCase
             ]
         );
 
-        $result = $response->json();
-        $response->assertOk() && $this->assertNotNull($result['access_token']);
+        $response->assertOk()->assertJsonStructure([
+            "access_token",
+            "token_type",
+            "expires_in",
+        ]);
     }
 
     public function test_login_fail_with_incorrect_password()
@@ -47,7 +50,7 @@ class AuthTest extends TestCase
             ]
         );
 
-        $response->assertStatus(401);
+        $response->assertStatus(401)->assertJson(["error" => "Unauthorized"]);
     }
 
     public function test_login_validation()
@@ -63,6 +66,12 @@ class AuthTest extends TestCase
             ]
         );
 
-        $response->assertStatus(422);
+        $response->assertStatus(422)->assertJson([
+            "message" => "The given data was invalid.",
+            "errors" => [
+                "email" => ["The email field is required."],
+                "password" => ["The password field is required."]
+            ]
+        ]);
     }
 }
