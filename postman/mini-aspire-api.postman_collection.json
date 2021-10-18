@@ -117,7 +117,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"amount\": 100000,\n    \"term\": 1,\n    \"term_type\": \"years\",\n    \"status\": \"pending\"\n}"
+							"raw": "{\n    \"amount\": 100000,\n    \"term\": 1,\n    \"term_type\": \"years\"\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/v1/loans",
@@ -128,48 +128,6 @@
 								"api",
 								"v1",
 								"loans"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Approve",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{HOST}}/api/v1/loans/1/approve",
-							"host": [
-								"{{HOST}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"loans",
-								"1",
-								"approve"
 							]
 						}
 					},
@@ -306,7 +264,7 @@
 							"raw": "{\n    \"amount\": 1923.08\n}"
 						},
 						"url": {
-							"raw": "{{HOST}}/api/v1/loan-payments/1/pay",
+							"raw": "{{HOST}}/api/v1/loan-payments/2/pay",
 							"host": [
 								"{{HOST}}"
 							],
@@ -314,7 +272,7 @@
 								"api",
 								"v1",
 								"loan-payments",
-								"1",
+								"2",
 								"pay"
 							]
 						}
