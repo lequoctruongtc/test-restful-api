@@ -24,4 +24,9 @@ class LoanPayment extends Model
         'start_at' => 'date',
         'end_at' => 'date',
     ];
+
+    public function loan()
+    {
+        return $this->belongsTo(Loan::class);
+    }
 }
